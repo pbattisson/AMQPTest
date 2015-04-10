@@ -22,7 +22,7 @@ function start() {
 
   app.get('/info', function(req, res){
     broker.publish('info.get', {}, function onInfo(err, retInfo) {
-      res.send({info: retInfo});
+      res.send(retInfo);
     });
   });
 
