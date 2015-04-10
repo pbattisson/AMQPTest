@@ -8,7 +8,7 @@ var RABBIT_URL = process.env.CLOUDAMQP_URL || 'amqp://localhost';
 throng(start, { workers: cpus, lifetime: Infinity });
 
 function start() {
-  logger.log({ type: 'info', message: 'starting info service' });
+  logger.log({ type: 'info', message: 'starting info service on process ' + process.pid });
 
   var broker = jackrabbit(RABBIT_URL, 1);
   broker.once('connected', create);
@@ -22,8 +22,11 @@ function start() {
     logger.log({ type: 'info', message: 'serving info' });
 
     broker.handle('info.get', function getInfo(message, reply) {
-      logger.log({ type: 'info', message: 'info served from this process.' });
-      reply("Here is your info");
+      logger.log({ type: 'info', message: 'info served from process: ' + process.pid });
+      reply({
+        info: "Here is your info",
+        served_from_process: process.pid
+      });
     });
   }
 
