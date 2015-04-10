@@ -22,7 +22,7 @@ function start() {
     logger.log({ type: 'info', message: 'serving info' });
 
     broker.handle('info.get', function getInfo(message, reply) {
-      logger.log({ type: 'info', message: 'info served from this process.' });
+      logger.log({ type: 'info', message: 'info served from process: ' + process.pid });
       reply({
         info: "Here is your info",
         served_from_process: process.pid
