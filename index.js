@@ -26,11 +26,18 @@ function start() {
     });
   });
 
+  app.get('/time', function(req, res){
+    broker.publish('time.get', {}, function onTime(err, retTime) {
+      res.send(retTime);
+    });
+  });
+
 
   app.listen(8080);
 
   function listen() {
     broker.create('info.get');
+    broker.create('time.get');
   }
 
   function exit(reason) {
