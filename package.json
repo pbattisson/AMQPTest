@@ -1,0 +1,17 @@
+{
+  "name": "AMQPTest",
+  "version": "0.0.1",
+  "description": "A test of using the AMQP system for passing messages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul Battisson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.3",
+    "jackrabbit": "^3.0.8",
+    "logfmt": "^1.2.0",
+    "throng": "^1.0.0"
+  }
+}
