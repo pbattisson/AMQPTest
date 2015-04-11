@@ -15,7 +15,13 @@ Then open a new terminal window and launch a service by navigating to the servic
 ```bash
 node services/info.js
 ```
-You can launch multiple instances of the service by repeating this and they will all subscribe to the same queue.
+
+or you can run the time service useing
+```bash
+node services/time.js
+```
+
+You can launch multiple instances of the service(s) by repeating this and they will all subscribe to the same queue.
 
 To then make a request to the server to call a service open a final terminal session calling
 ```bash

@@ -22,7 +22,13 @@ function start() {
 
   app.get('/info', function(req, res){
     broker.publish('info.get', {}, function onInfo(err, retInfo) {
-      res.send({info: retInfo});
+      res.send(retInfo);
+    });
+  });
+
+  app.get('/time', function(req, res){
+    broker.publish('time.get', {}, function onTime(err, retTime) {
+      res.send(retTime);
     });
   });
 
@@ -31,6 +37,7 @@ function start() {
 
   function listen() {
     broker.create('info.get');
+    broker.create('time.get');
   }
 
   function exit(reason) {
